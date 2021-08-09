@@ -34,7 +34,7 @@ export default function ToDoList() {
     localStorage.setItem("todo", JSON.stringify(storedTodo));
     //console.log(storedTodo);
   }, [storedTodo]);
-  console.log(storedTodo);
+
   return (
     <div>
       <div className="to-do-list">

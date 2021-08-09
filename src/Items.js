@@ -1,6 +1,19 @@
 import React from "react";
-
-export default function Items(storedTodo) {
-  console.log("Inside items" + storedTodo);
-  return <div></div>;
+const { v4: uuidv4 } = require("uuid");
+export default function Items({ storedTodo }) {
+  return (
+    <>
+      {storedTodo.map((element) => {
+        return (
+          <>
+            <div className="to-do-elements">
+              <input type="checkbox" />
+              <li key={uuidv4()}>{element.name}</li>
+              <button className="delete-button">delete</button>
+            </div>
+          </>
+        );
+      })}
+    </>
+  );
 }
