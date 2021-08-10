@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/excellence-technosoft/static/css/main.ebfccf40.chunk.css",
+    "main.js": "/excellence-technosoft/static/js/main.60c26915.chunk.js",
+    "main.js.map": "/excellence-technosoft/static/js/main.60c26915.chunk.js.map",
+    "runtime-main.js": "/excellence-technosoft/static/js/runtime-main.8d66f2a9.js",
+    "runtime-main.js.map": "/excellence-technosoft/static/js/runtime-main.8d66f2a9.js.map",
+    "static/js/2.f74e2fd4.chunk.js": "/excellence-technosoft/static/js/2.f74e2fd4.chunk.js",
+    "static/js/2.f74e2fd4.chunk.js.map": "/excellence-technosoft/static/js/2.f74e2fd4.chunk.js.map",
+    "index.html": "/excellence-technosoft/index.html",
+    "static/css/main.ebfccf40.chunk.css.map": "/excellence-technosoft/static/css/main.ebfccf40.chunk.css.map",
+    "static/js/2.f74e2fd4.chunk.js.LICENSE.txt": "/excellence-technosoft/static/js/2.f74e2fd4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8d66f2a9.js",
+    "static/js/2.f74e2fd4.chunk.js",
+    "static/css/main.ebfccf40.chunk.css",
+    "static/js/main.60c26915.chunk.js"
+  ]
+}
