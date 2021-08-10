@@ -19,6 +19,18 @@ export default function ToDoList() {
     }
   };
 
+  var handleToggleToDo = (id) => {
+    console.log(id);
+    const newStoredTodo = [...storedTodo];
+    for (let i = 0; i < newStoredTodo.length; i++) {
+      if (newStoredTodo[i].id === id) {
+        newStoredTodo[i].complete = !newStoredTodo[i].complete;
+        break;
+      }
+    }
+    setStoredTodo(newStoredTodo);
+  };
+
   var addTodo = () => {
     const name = enteredText.current.value;
     if (name === "") return;
@@ -49,7 +61,11 @@ export default function ToDoList() {
         <button className="enter-button">Add</button>
       </div>
       <div className="items-added">
-        <Items storedTodo={storedTodo} />
+        <Items
+          key={uuidv4()}
+          storedTodo={storedTodo}
+          handleToggleToDo={handleToggleToDo}
+        />
       </div>
     </div>
   );
