@@ -12,15 +12,13 @@ export default function ToDoList() {
 
   var handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      //setEnteredTodo((prev)=>enteredText.current.value);
-
       addTodo();
       enteredText.current.value = "";
     }
   };
 
   var handleToggleToDo = (id) => {
-    console.log(id);
+    //console.log(id);
     const newStoredTodo = [...storedTodo];
     for (let i = 0; i < newStoredTodo.length; i++) {
       if (newStoredTodo[i].id === id) {
@@ -34,11 +32,11 @@ export default function ToDoList() {
   var addTodo = () => {
     const name = enteredText.current.value;
     if (name === "") return;
-
-    //console.log("i am inside addTodo");
-
     setStoredTodo((prev) => {
-      return [...prev, { id: uuidv4(), name: name, complete: false }];
+      return [
+        ...prev,
+        { id: uuidv4(), name: name, complete: false, edit: false },
+      ];
     });
   };
 
@@ -47,6 +45,40 @@ export default function ToDoList() {
     //console.log(storedTodo);
   }, [storedTodo]);
 
+  var deleteTodo = (id) => {
+    //console.log("inside delete");
+    const newStoredTodo = storedTodo.filter((element) => {
+      if (element.id !== id) return element;
+    });
+    setStoredTodo(newStoredTodo);
+  };
+
+  var handleEdit = (id) => {
+    //console.log("inside Edit");
+    const newStoredTodo = [...storedTodo];
+    for (let i = 0; i < newStoredTodo.length; i++) {
+      if (newStoredTodo[i].id === id) {
+        newStoredTodo[i].edit = !newStoredTodo[i].edit;
+        break;
+      }
+    }
+    setStoredTodo(newStoredTodo);
+  };
+
+  var handleUpdate = (id, updatedTodo) => {
+    const newStoredTodo = [...storedTodo];
+    console.log(`id=${id} updatedTodo=${updatedTodo}`);
+    for (let i = 0; i < newStoredTodo.length; i++) {
+      if (newStoredTodo[i].id === id) {
+        newStoredTodo[i].name = updatedTodo;
+        newStoredTodo[i].edit = false;
+        break;
+      }
+    }
+    setStoredTodo(newStoredTodo);
+  };
+
+  console.log(storedTodo);
   return (
     <div>
       <div className="to-do-list">
@@ -58,13 +90,14 @@ export default function ToDoList() {
           ref={enteredText}
           onKeyPress={handleKeyPress}
         ></input>
-        <button className="enter-button">Add</button>
       </div>
       <div className="items-added">
         <Items
-          key={uuidv4()}
           storedTodo={storedTodo}
           handleToggleToDo={handleToggleToDo}
+          deleteTodo={deleteTodo}
+          handleEdit={handleEdit}
+          handleUpdate={handleUpdate}
         />
       </div>
     </div>
